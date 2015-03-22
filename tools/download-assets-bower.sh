@@ -5,6 +5,7 @@ ROOTPATH="./packages"
 LIST_PACKAGES=(
 	jquery
 	angular
+	angular-ui-router
 )
 
 if [ ! -d "${ROOTPATH}" ]; then
