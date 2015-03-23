@@ -8,12 +8,14 @@ var express = require('express'),
     app = module.exports.app = exports.app = express(),
     appCache = new memcache.Client(11211, '127.0.0.1');
 
+const ROUTE_VENDORS = '/vendors/:organization([\\w_-]+)/:version(\\d\.\\d\.\\d)/:file([\\w\\_\\-\\.]+\.[a-z]{2,3})';
+
 app.disable('x-powered-by');
 app.use(logger('dev'));
 app.use(compression({
     level: 9
 }));
-app.use(function (req, res, next) {
+app.use(ROUTE_VENDORS, function (req, res, next) {
     req.on('end', function () {
         var organization = req.params.organization,
             version = req.params.version,
@@ -38,7 +40,6 @@ app.use(function (req, res, next) {
 appCache.connect();
 
 // Routes
-const ROUTE_VENDORS = '/vendors/:organization([\\w_-]+)/:version(\\d\.\\d\.\\d)/:file([\\w\\_\\-\\.]+\.[a-z]{2,3})';
 app.get(ROUTE_VENDORS, function (req, res) {
     var organization = req.params.organization,
         version = req.params.version,
