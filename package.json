@@ -4,7 +4,7 @@
   "description": "Simple CDN Server",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --reporter nyan"
+    "test": "./node_modules/.bin/mocha --reporter nyan"
   },
   "repository": {
     "type": "git",
