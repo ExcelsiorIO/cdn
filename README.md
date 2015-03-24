@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ExcelsiorIO/cdn.svg)](https://travis-ci.org/ExcelsiorIO/cdn)
+
 ###About
 A simple CDN server with `mongodb` for read content and `memcached` for fast cache
 
